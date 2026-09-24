@@ -21,18 +21,14 @@ app.get('/health', (req, res) => {
 });
 
 // Routes will be mounted here in Step 4+
-app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth',       require('./routes/auth'));
 app.use('/api/categories', require('./routes/categories'));
-app.use('/api/items', require('./routes/items'));
-app.use('/api/addresses', require('./routes/addresses'));
-app.use('/api/cart', require('./routes/cart'));
-app.use('/api/orders', require('./routes/orders'));
-// app.use('/api/items',    require('./routes/items'));
-// app.use('/api/cart',     require('./routes/cart'));
-// app.use('/api/orders',   require('./routes/orders'));
-// app.use('/api/seller',   require('./routes/seller'));
-// app.use('/api/admin',    require('./routes/admin'));
-// app.use('/api/settings', require('./routes/settings'));
+app.use('/api/items',      require('./routes/items'));
+app.use('/api/addresses',  require('./routes/addresses'));
+app.use('/api/cart',       require('./routes/cart'));
+app.use('/api/orders',     require('./routes/orders'));
+app.use('/api/settings',   require('./routes/settings'));
+app.use('/api/admin',      require('./routes/admin'));
 
 // 404
 app.use((req, res) => res.status(404).json({ error: 'Not found' }));
