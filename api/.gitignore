@@ -1,7 +1,8 @@
 node_modules/
 .env
+.env.*
+!.env.example
 certs/
 *.pem
 coverage/
-.DS_Store
-npm-debug.log*
+*.log
