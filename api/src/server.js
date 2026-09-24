@@ -21,9 +21,12 @@ app.get('/health', (req, res) => {
 });
 
 // Routes will be mounted here in Step 4+
-app.use('/api/auth',     require('./routes/auth'));
+app.use('/api/auth', require('./routes/auth'));
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/items', require('./routes/items'));
+app.use('/api/addresses', require('./routes/addresses'));
+app.use('/api/cart', require('./routes/cart'));
+app.use('/api/orders', require('./routes/orders'));
 // app.use('/api/items',    require('./routes/items'));
 // app.use('/api/cart',     require('./routes/cart'));
 // app.use('/api/orders',   require('./routes/orders'));
