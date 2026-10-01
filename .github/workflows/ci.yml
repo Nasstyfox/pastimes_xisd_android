@@ -45,12 +45,8 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          cmdline-tools-version: '11076708'
-          packages: 'platforms;android-35 platform-tools build-tools;35.0.0'
-          accept-android-sdk-licenses: true
+      # NOTE: no setup-android action — ubuntu-latest already has the Android SDK.
+      # Just point Gradle at it via ANDROID_HOME.
 
       - name: Decode google-services.json from secret
         run: |
@@ -65,6 +61,8 @@ jobs:
       - name: Build debug APK
         working-directory: android
         run: ./gradlew assembleDebug --stacktrace --no-daemon
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
