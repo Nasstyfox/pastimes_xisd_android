@@ -1,0 +1,32 @@
+# Node
+node_modules/
+npm-debug.log*
+.env
+.env.*
+!.env.example
+
+# Certs
+certs/
+*.pem
+
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/*.iml
+android/captures/
+android/.externalNativeBuild/
+android/app/google-services.json
+
+# Misc
+.DS_Store
+Thumbs.db
+coverage/
+*.log
+# Root IDE files
+.idea/
+.gradle/
+*.iml
+

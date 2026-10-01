@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "pastimes_xisd"
+rootProject.name = "Pastimes3"
 include(":app")

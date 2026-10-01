@@ -20,7 +20,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', ts: new Date().toISOString() });
 });
 
-// Routes will be mounted here in Step 4+
+// Routes
 app.use('/api/auth',       require('./routes/auth'));
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/items',      require('./routes/items'));
@@ -41,14 +41,18 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 4000;
 
-(async () => {
-  try {
-    await testConnection();
-  } catch (e) {
-    console.error('[boot] DB connection failed:', e.message);
-    process.exit(1);
-  }
-  app.listen(PORT, () => console.log(`[server] Listening on :${PORT}`));
-})();
+// Only start the HTTP server when run directly (node src/server.js).
+// When Jest imports this file, it gets the Express app WITHOUT listening on a port.
+if (require.main === module) {
+  (async () => {
+    try {
+      await testConnection();
+    } catch (e) {
+      console.error('[boot] DB connection failed:', e.message);
+      process.exit(1);
+    }
+    app.listen(PORT, () => console.log(`[server] Listening on :${PORT}`));
+  })();
+}
 
 module.exports = app;
